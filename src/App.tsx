@@ -1,48 +1,32 @@
-import { useState } from "react"
-import Header from "./components/Header"
-import NewServiceForm from "./components/NewServiceForm"
-import ServiceCard from "./components/ServiceCard"
+import { BrowserRouter, Routes, Route } from 'react-router';
+import { DashboardPage } from './pages/DashboardPage';
+import { ClientsPage } from './pages/ClientsPage';
+import { ServiceOrdersPage } from './pages/ServiceOrdersPage';
+import { Header } from './components/Header';
 
-interface ServiceOrder {
-  cliente: string
-  aparelho: string
-  servico: string
-  status: string
-}
+// const Header = () => {
+//   return (
+//     <header className="mb-6">
+//       <h1 className="text-4xl font-bold text-gray-800">
+//         iRepair Dashboard
+//       </h1>
+//     </header>
+//   )
+// }
 
-function App() {
-
-  const [services, setServices] = useState<ServiceOrder[]>
-  ([{
-    cliente: "Maria Eduarda",
-    aparelho: "TV",
-    servico: "Conserto de tela",
-    status: "Aberto"
-  }])
-
-  function addService(newService: ServiceOrder) {
-    setServices([...services, newService])
-  }
-
+const App = () => {
   return (
-    <>
-      <div className="max-w-3x1 mx-auto p-6 space-y-3 min-h-screen bg-gray-100 font-sans">
-        <Header />
-        <NewServiceForm addService={addService} />
-        <div className="flex gap-4 flex-wrap">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              cliente={service.cliente}
-              aparelho={service.aparelho}
-              servico={service.servico}
-              status={service.status}
-            />
-          ))}
-          </div>
-      </div>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/service-orders" element={<ServiceOrdersPage />} />
+          <Route path='*' element={<h1>Página não encontrada 💔</h1>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;

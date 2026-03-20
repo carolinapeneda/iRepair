@@ -1,5 +1,5 @@
 interface ServiceCardProps {
-  cliente: string
+  cliente: number;
   aparelho: string
   servico: string
   status:string

@@ -4,16 +4,6 @@ import { ClientsPage } from './pages/ClientsPage';
 import { ServiceOrdersPage } from './pages/ServiceOrdersPage';
 import { Header } from './components/Header';
 
-// const Header = () => {
-//   return (
-//     <header className="mb-6">
-//       <h1 className="text-4xl font-bold text-gray-800">
-//         iRepair Dashboard
-//       </h1>
-//     </header>
-//   )
-// }
-
 const App = () => {
   return (
     <BrowserRouter>

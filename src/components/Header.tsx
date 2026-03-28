@@ -8,46 +8,35 @@ export function Header(){
     navigate(-1); // volta uma página no histórico
   }
 
-  return (
-        <div className="max-w-3xl mx-auto flex flex-col justify-between items-center">
-          <header className="mb-6">
-            <h1 className="text-4xl font-bold text-gray-800">
+return (
+    <div className="min-h-screen bg-gray-100 font-sans">
+      <header className="bg-white shadow-sm border-b border-gray-200 w-full mb-8">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-8">
+            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
               iRepair Dashboard
             </h1>
-          </header>
-          <nav className="flex flex-col gap-4">
-            <Link to="/" className="hover:underline">Dashboard</Link>
-            <Link to="/clients" className="hover:underline">Clientes</Link>
-            <Link to="/service-orders" className="hover:underline">Ordens de Serviço</Link>
-          </nav>
+            
+            <nav className="flex gap-6 text-sm font-medium text-gray-700">
+              <Link to="/" className="hover:text-blue-600 transition-colors">Dashboard</Link>
+              <Link to="/clients" className="hover:text-blue-600 transition-colors">Clientes</Link>
+              <Link to="/service-orders" className="hover:text-blue-600 transition-colors">Ordens de Serviço</Link>
+            </nav>
+          </div>
 
-          <button onClick={handleBack} className="bg-blue-800 px-3 py-1 rounded">
-            Voltar
+          <button 
+            onClick={handleBack} 
+            className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+          >
+            <span>←</span> Voltar
           </button>
-          <main className='p-6'>
-            <Outlet />
-          </main>
         </div>
-    );
-  }
+      </header>
 
-  // // Opção 1: Link (para navegação em texto/botões simples)
-  // const Menu = () => {
-  //   return (
-  //     <nav>
-  //       <Link to="/">Dashboard</Link>
-  //       <Link to="/clients">Clientes</Link>
-  //       <Link to="/service-orders">Ordens de Serviço</Link>
-  //     </nav>
-  //   );
-  // };
-
-  // // Opção 2: useNavigate (para navegar programaticamente)
-  // // Arrow function para o componente, function normal para o handler
-  // const BackButton = () => {
-
-
-  //   return <button onClick={handleBack}>Voltar</button>;
-  // };
-
+      <main className="max-w-7xl mx-auto px-6 pb-12">
+        <Outlet />
+      </main>
+    </div>
+  );
+}
 
